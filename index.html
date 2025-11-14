@@ -6,17 +6,18 @@
     <title>Mood Quote Hub</title>
     <!-- Load Tailwind CSS for utility classes and aesthetics -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&display=swap" rel="stylesheet">
     <style>
         /* Custom styles for the accordion functionality and visual flair */
         :root {
-            --primary-color: #4f46e5; /* Indigo */
-            --accent-color: #f59e0b; /* Amber */
+            --calm-color: #3b82f6; /* Blue */
+            --motivated-color: #ef4444; /* Red */
+            --funny-color: #f59e0b; /* Amber */
+            --love-color: #dc2626; /* Deep Red for Love/Heart */
         }
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f8fafc; /* Light gray background */
-            /* Ensure the body is full height for better mobile layout */
             min-height: 100vh; 
         }
         
@@ -29,7 +30,7 @@
             padding-right: 1rem;
         }
         .accordion-item.active .accordion-content {
-            max-height: 500px; /* Large enough value to cover all quotes */
+            max-height: 500px; /* Large enough default value */
             padding-top: 1rem;
             padding-bottom: 1rem;
         }
@@ -50,32 +51,57 @@
             box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
         }
         
-        /* Specific mobile optimization: Reduce button padding on extra-small screens if necessary */
+        /* Specific mobile optimization */
         @media (max-width: 400px) {
             .accordion-header {
-                padding: 0.75rem 1rem; /* Slightly reduced vertical padding for small phones */
+                padding: 0.75rem 1rem; 
             }
             .accordion-header span {
-                font-size: 1.1rem; /* Adjust font size slightly */
+                font-size: 1.1rem; 
             }
         }
     </style>
 </head>
 <body class="min-h-screen flex flex-col items-center">
 
+    <!-- 
+      This is the definition for the Instagram gradient icon. 
+      It's defined once here, invisibly, and then referenced by all the icons below.
+    -->
+    <svg width="0" height="0" style="position:absolute;z-index:-1;">
+      <defs>
+        <linearGradient id="instaGradient" gradientTransform="rotate(45)">
+          <stop offset="0%" stop-color="#feda75" /> <!-- Yellow -->
+          <stop offset="25%" stop-color="#fa7e1e" /> <!-- Orange -->
+          <stop offset="50%" stop-color="#d62976" /> <!-- Pink -->
+          <stop offset="75%" stop-color="#962fbf" /> <!-- Purple -->
+          <stop offset="100%" stop-color="#4f5bd5" /> <!-- Blue -->
+        </linearGradient>
+      </defs>
+    </svg>
+
     <!-- Main Container -->
-    <!-- Optimization: Changed mx-4 to mx-2 on small screens for better edge-to-edge fit -->
     <div class="w-full max-w-2xl bg-white shadow-xl rounded-2xl mx-2 my-8 p-6 sm:mx-4 sm:p-8">
 
         <!-- Header & CTA Section -->
         <header class="text-center mb-8">
-            <!-- Font size responsive adjustments: use text-3xl by default, up to sm:text-4xl -->
-            <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-2">Three Moods, One Soul!</h1>
-            <!-- Font size responsive adjustments: use text-base by default, up to sm:text-lg -->
-            <p class="text-gray-500 text-base sm:text-lg">Scan this QR code anywhere to choose your mood-matched inspiration.</p>
+            <h1 class="text-4xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-500 to-red-500 mb-2">
+                Three Moods, One Soul!
+            </h1>
+            <p class="text-gray-500 text-base sm:text-lg">Discover raw emotions and content that resonates deeply.</p>
         </header>
+        
+        <!-- NEW: Centered Instagram Handle with Logo Colors -->
+        <div class="text-center mb-4">
+            <a href="https://instagram.com/aman_ahsaas" target="_blank" class="inline-flex items-center hover:opacity-80 transition duration-150">
+                <!-- Handle Text with gradient colors from the header -->
+                <span class="text-xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-500 to-red-500">
+                    @aman_ahsaas
+                </span>
+            </a>
+        </div>
 
-        <!-- Permanent Instagram Link (Remains w-full for best touch target) -->
+        <!-- Permanent Instagram Link (Main CTA) - Updated to remove handle text -->
         <a id="insta-link" href="https://instagram.com/aman_ahsaas" target="_blank" 
            class="mood-button w-full flex items-center justify-center p-3 mb-6 rounded-xl font-bold text-white bg-pink-500 hover:bg-pink-600 transition duration-150 text-sm sm:text-base">
            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2">
@@ -83,72 +109,138 @@
                 <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
                 <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
             </svg>
-            Follow for Daily Inspiration! (@aman_ahsaas)
+            Tap to Find Your Unfiltered Feelings!
         </a>
 
         <!-- Mood Selection Accordion -->
         <div id="quote-accordion" class="space-y-4">
 
             <!-- 1. Calm & Reflective Mood -->
-            <div class="accordion-item rounded-xl border border-gray-200 bg-gray-50" data-mood="calm">
-                <button class="accordion-header w-full flex justify-between items-center p-4 text-left font-semibold text-gray-700 bg-white hover:bg-gray-100 transition rounded-xl" onclick="toggleAccordion(this)">
-                    <!-- Responsive text sizing for button title -->
+            <div class="accordion-item rounded-xl border border-blue-200 bg-blue-50" data-mood="calm">
+                <button class="accordion-header w-full flex justify-between items-center p-4 text-left font-semibold text-blue-800 bg-white hover:bg-blue-100 transition rounded-xl" onclick="toggleAccordion(this)">
                     <span class="text-lg sm:text-xl">😌 Calm & Reflective</span>
-                    <svg class="accordion-icon w-6 h-6 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg class="accordion-icon w-6 h-6 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                     </svg>
                 </button>
-                <div class="accordion-content bg-white/50 text-gray-600 border-t border-gray-100">
-                    <ul class="list-disc list-inside space-y-2 text-sm sm:text-base">
-                        <li>“The mind is everything. What you think you become.” — Buddha</li>
-                        <li>“Do not dwell in the past, do not dream of the future, concentrate the mind on the present moment.” — Buddha</li>
-                        <li>“Peace comes from within. Do not seek it without.” — Siddharta Gautama</li>
-                        <li>“Happiness is a state of activity.” — Aristotle</li>
+                <div class="accordion-content bg-white/50 text-gray-700 border-t border-blue-100">
+                    <!-- Updated quote styling (italic, darker text) -->
+                    <ul class="list-disc list-inside space-y-2 text-sm sm:text-base italic">
+                        <li>“RANGMANCH🎤ये दुनिया भई रंगमंच, और किरदार हुए हम जैसे..”  
+                            <a href="https://www.instagram.com/p/DObYfkqjLGb/" target="_blank" 
+                               class="text-xs text-blue-600 hover:text-blue-800 font-semibold ml-2 inline-flex items-center align-middle not-italic">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" class="w-3 h-3 mr-1">
+                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="url(#instaGradient)"></rect>
+                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" fill="white"></path>
+                                    <circle cx="17.5" cy="6.5" r="1.5" fill="white"></circle>
+                                </svg>
+                                रंगमंच
+                            </a>
+                        </li>
+                        <li>“Equality!! हमारी जिंदगी तो खुली किताब है, कुछ पन्ने तुम भी खोलो तो अच्छा रहेगा✌️”
+                            <a href="https://www.instagram.com/p/DQDowR5iLPj/" target="_blank" 
+                               class="text-xs text-blue-600 hover:text-blue-800 font-semibold ml-2 inline-flex items-center align-middle not-italic">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" class="w-3 h-3 mr-1">
+                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="url(#instaGradient)"></rect>
+                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" fill="white"></path>
+                                    <circle cx="17.5" cy="6.5" r="1.5" fill="white"></circle>
+                                </svg>
+                                Equality
+                            </a>
+                        </li>
+                        <li>“Trust !! Cheap people can't afford it😉”
+                            <a href="https://www.instagram.com/p/DD9oALbtYh0/" target="_blank" 
+                               class="text-xs text-blue-600 hover:text-blue-800 font-semibold ml-2 inline-flex items-center align-middle not-italic">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" class="w-3 h-3 mr-1">
+                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="url(#instaGradient)"></rect>
+                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" fill="white"></path>
+                                    <circle cx="17.5" cy="6.5" r="1.5" fill="white"></circle>
+                                </svg>
+                                Aitbaar
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
-
-            <!-- 2. Motivated & Driven Mood -->
-            <div class="accordion-item rounded-xl border border-gray-200 bg-gray-50" data-mood="motivated">
-                <button class="accordion-header w-full flex justify-between items-center p-4 text-left font-semibold text-gray-700 bg-white hover:bg-gray-100 transition rounded-xl" onclick="toggleAccordion(this)">
-                    <span class="text-lg sm:text-xl">🔥 Motivated & Driven</span>
-                    <svg class="accordion-icon w-6 h-6 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                    </svg>
-                </button>
-                <div class="accordion-content bg-white/50 text-gray-600 border-t border-gray-100">
-                    <ul class="list-disc list-inside space-y-2 text-sm sm:text-base">
-                        <li>“The only way to do great work is to love what you do.” — Steve Jobs</li>
-                        <li>“Strive not to be a success, but rather to be of value.” — Albert Einstein</li>
-                        <li>“The difference between a successful person and others is not a lack of strength, not a lack of knowledge, but rather a lack of will.” — Vince Lombardi</li>
-                        <li>“Action is the foundational key to all success.” — Pablo Picasso</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- 3. Funny & Light Mood -->
-            <div class="accordion-item rounded-xl border border-gray-200 bg-gray-50" data-mood="funny">
-                <button class="accordion-header w-full flex justify-between items-center p-4 text-left font-semibold text-gray-700 bg-white hover:bg-gray-100 transition rounded-xl" onclick="toggleAccordion(this)">
-                    <span class="text-lg sm:text-xl">🤣 Funny & Light</span>
-                    <svg class="accordion-icon w-6 h-6 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            
+            <!-- 2. Love & Light Mood -->
+            <div class="accordion-item rounded-xl border border-pink-200 bg-pink-50" data-mood="love">
+                <button class="accordion-header w-full flex justify-between items-center p-4 text-left font-semibold text-pink-800 bg-white hover:bg-pink-100 transition rounded-xl" onclick="toggleAccordion(this)">
+                    <span class="text-lg sm:text-xl">❤️ Love & Light</span>
+                    <svg class="accordion-icon w-6 h-6 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                         </svg>
                     </button>
-                    <div class="accordion-content bg-white/50 text-gray-600 border-t border-gray-100">
-                        <ul class="list-disc list-inside space-y-2 text-sm sm:text-base">
-                            <li>“I used to jog, but all the ice cubes kept falling out of my glass.” — Unknown</li>
-                            <li>“The best way to cheer yourself is to try to cheer someone else up.” — Mark Twain</li>
-                            <li>“I don't need an inspirational quote. I need coffee.” — Unknown</li>
-                            <li>“Always borrow money from a pessimist. They’ll never expect it back.” — Oscar Wilde</li>
+                    <div class="accordion-content bg-white/50 text-gray-700 border-t border-pink-100">
+                        <!-- Content was not visible, ensure list items are present and correct -->
+                        <ul class="list-disc list-inside space-y-2 text-sm sm:text-base italic">
+                            <li>“समर्पण!! सागर से नहीं होती नदियाँ मार्ग सागर होते हैं नदियाँ से 🙏” 
+                                <a href="https://www.instagram.com/p/DEJx88XtN4Q/" target="_blank" 
+                                   class="text-xs text-pink-600 hover:text-pink-800 font-semibold ml-2 inline-flex items-center align-middle not-italic">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" class="w-3 h-3 mr-1">
+                                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="url(#instaGradient)"></rect>
+                                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" fill="white"></path>
+                                        <circle cx="17.5" cy="6.5" r="1.5" fill="white"></circle>
+                                    </svg>
+                                    समर्पण
+                                </a>
+                            </li>
+                            <li>“नटखट श्याम: गोकुल में तो बदनाम थे अब बरसाने में हुड़दंग रे 🎨”
+                                <a href="https://www.instagram.com/p/DP5WlpXE3bW/" target="_blank" 
+                                   class="text-xs text-pink-600 hover:text-pink-800 font-semibold ml-2 inline-flex items-center align-middle not-italic">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" class="w-3 h-3 mr-1">
+                                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="url(#instaGradient)"></rect>
+                                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" fill="white"></path>
+                                        <circle cx="17.5" cy="6.5" r="1.5" fill="white"></circle>
+                                    </svg>
+                                    श्याम
+                                </a>
+                            </li>
+                            <li>“राधे श्याम 🙏🏻”
+                                <a href="https://www.instagram.com/p/DBJeoFrNWWL/" target="_blank" 
+                                   class="text-xs text-pink-600 hover:text-pink-800 font-semibold ml-2 inline-flex items-center align-middle not-italic">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" class="w-3 h-3 mr-1">
+                                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="url(#instaGradient)"></rect>
+                                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" fill="white"></path>
+                                        <circle cx="17.5" cy="6.5" r="1.5" fill="white"></circle>
+                                    </svg>
+                                    राधे
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
 
+            <!-- 3. Motivated & Driven Mood -->
+            <div class="accordion-item rounded-xl border border-red-200 bg-red-50" data-mood="motivated">
+                <button class="accordion-header w-full flex justify-between items-center p-4 text-left font-semibold text-red-800 bg-white hover:bg-red-100 transition rounded-xl" onclick="toggleAccordion(this)">
+                    <span class="text-lg sm:text-xl">🔥 Motivated & Driven</span>
+                    <svg class="accordion-icon w-6 h-6 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </button>
+                <div class="accordion-content bg-white/50 text-gray-700 border-t border-red-100">
+                    <!-- Updated quote styling (italic, darker text) -->
+                    <ul class="list-disc list-inside space-y-2 text-sm sm:text-base italic">
+                        
+                        <li>“तजुर्बा - चंदन को भी महकने के लिए एक उम्र जरूरी है 💬”
+                            <a href="https://www.instagram.com/p/DQDowR5iLPj/" target="_blank" 
+                               class="text-xs text-red-600 hover:text-red-800 font-semibold ml-2 inline-flex items-center align-middle not-italic">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" class="w-3 h-3 mr-1">
+                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="url(#instaGradient)"></rect>
+                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" fill="white"></path>
+                                    <circle cx="17.5" cy="6.5" r="1.5" fill="white"></circle>
+                                </svg>
+                                तजुर्बा
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
 
             <!-- Footer Note -->
             <footer class="mt-8 text-center text-xs text-gray-400">
-                <p>Content updated dynamically. Scan this same QR code for new quotes!</p>
+                <p>Curated content for the soul. Choose empathy over conflict!</p>
             </footer>
 
         </div>
@@ -175,9 +267,8 @@
                 } else {
                     // If currently inactive, open it
                     item.classList.add('active');
-                    // Set max-height to its scroll height so the CSS transition works smoothly
-                    // We use scrollHeight to ensure it fully expands regardless of content size.
-                    content.style.maxHeight = content.scrollHeight + "px";
+                    // FIX: Add a buffer (e.g., 30px) to scrollHeight to prevent content cutoff due to padding/margins.
+                    content.style.maxHeight = (content.scrollHeight + 30) + "px";
                 }
             }
         </script>
