@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mood Quote Hub</title>
-    <!-- Load Tailwind CSS for utility classes and aesthetics -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Tailwind CSS for utility classes and aesthetics --><script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&display=swap" rel="stylesheet">
     <style>
         /* Custom styles for the accordion functionality and visual flair */
@@ -67,42 +66,31 @@
     <!-- 
       This is the definition for the Instagram gradient icon. 
       It's defined once here, invisibly, and then referenced by all the icons below.
-    -->
-    <svg width="0" height="0" style="position:absolute;z-index:-1;">
+    --><svg width="0" height="0" style="position:absolute;z-index:-1;">
       <defs>
         <linearGradient id="instaGradient" gradientTransform="rotate(45)">
-          <stop offset="0%" stop-color="#feda75" /> <!-- Yellow -->
-          <stop offset="25%" stop-color="#fa7e1e" /> <!-- Orange -->
-          <stop offset="50%" stop-color="#d62976" /> <!-- Pink -->
-          <stop offset="75%" stop-color="#962fbf" /> <!-- Purple -->
-          <stop offset="100%" stop-color="#4f5bd5" /> <!-- Blue -->
-        </linearGradient>
+          <stop offset="0%" stop-color="#feda75" /> <!-- Yellow --><stop offset="25%" stop-color="#fa7e1e" /> <!-- Orange --><stop offset="50%" stop-color="#d62976" /> <!-- Pink --><stop offset="75%" stop-color="#962fbf" /> <!-- Purple --><stop offset="100%" stop-color="#4f5bd5" /> <!-- Blue --></linearGradient>
       </defs>
     </svg>
 
-    <!-- Main Container -->
-    <div class="w-full max-w-2xl bg-white shadow-xl rounded-2xl mx-2 my-8 p-6 sm:mx-4 sm:p-8">
+    <!-- Main Container --><div class="w-full max-w-2xl bg-white shadow-xl rounded-2xl mx-2 my-8 p-6 sm:mx-4 sm:p-8">
 
-        <!-- Header & CTA Section -->
-        <header class="text-center mb-8">
+        <!-- Header & CTA Section --><header class="text-center mb-8">
             <h1 class="text-4xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-500 to-red-500 mb-2">
                 FEEL IT. CLICK IT. REPEAT.
             </h1>
             <p class="text-gray-500 text-base sm:text-lg">Discover raw emotions and content that resonates deeply.</p>
         </header>
         
-        <!-- NEW: Centered Instagram Handle with Logo Colors -->
-        <div class="text-center mb-4">
+        <!-- NEW: Centered Instagram Handle with Logo Colors --><div class="text-center mb-4">
             <a href="https://instagram.com/aman_ahsaas" target="_blank" class="inline-flex items-center hover:opacity-80 transition duration-150">
-                <!-- Handle Text with gradient colors from the header -->
-                <span class="text-xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-500 to-red-500">
+                <!-- Handle Text with gradient colors from the header --><span class="text-xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-500 to-red-500">
                     @aman_ahsaas
                 </span>
             </a>
         </div>
 
-        <!-- Permanent Instagram Link (Main CTA) - Updated to remove handle text -->
-        <a id="insta-link" href="https://instagram.com/aman_ahsaas" target="_blank" 
+        <!-- Permanent Instagram Link (Main CTA) - Updated to remove handle text --><a id="insta-link" href="https://instagram.com/aman_ahsaas" target="_blank" 
            class="mood-button w-full flex items-center justify-center p-3 mb-6 rounded-xl font-bold text-white bg-pink-500 hover:bg-pink-600 transition duration-150 text-sm sm:text-base">
            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2">
                 <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
@@ -112,11 +100,9 @@
             Tap to Find Your Unfiltered Feelings!
         </a>
 
-        <!-- Mood Selection Accordion -->
-        <div id="quote-accordion" class="space-y-4">
+        <!-- Mood Selection Accordion --><div id="quote-accordion" class="space-y-4">
 
-            <!-- 1. Calm & Reflective Mood -->
-            <div class="accordion-item rounded-xl border border-blue-200 bg-blue-50" data-mood="calm">
+            <!-- 1. Calm & Reflective Mood --><div class="accordion-item rounded-xl border border-blue-200 bg-blue-50" data-mood="calm">
                 <button class="accordion-header w-full flex justify-between items-center p-4 text-left font-semibold text-blue-800 bg-white hover:bg-blue-100 transition rounded-xl" onclick="toggleAccordion(this)">
                     <span class="text-lg sm:text-xl">😌 Calm & Reflective</span>
                     <svg class="accordion-icon w-6 h-6 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -124,11 +110,10 @@
                     </svg>
                 </button>
                 <div class="accordion-content bg-white/50 text-gray-700 border-t border-blue-100">
-                    <!-- Updated quote styling (italic, darker text) -->
-                    <ul class="list-disc list-inside space-y-2 text-sm sm:text-base italic">
+                    <!-- Updated quote styling (italic, darker text) --><ul class="list-disc list-inside space-y-2 text-sm sm:text-base italic">
                         <li>“RANGMANCH🎤ये दुनिया भई रंगमंच, और किरदार हुए हम जैसे..”  
                             <a href="https://www.instagram.com/p/DObYfkqjLGb/" target="_blank" 
-                               class="text-xs text-blue-600 hover:text-blue-800 font-semibold ml-2 inline-flex items-center align-middle not-italic">
+                               class="text-xs text-blue-600 hover:text-blue-800 font-semibold ml-2 inline-flex items-center align-middle not-italic underline">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" class="w-3 h-3 mr-1">
                                     <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="url(#instaGradient)"></rect>
                                     <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" fill="white"></path>
@@ -139,7 +124,7 @@
                         </li>
                         <li>“Equality!! हमारी जिंदगी तो खुली किताब है, कुछ पन्ने तुम भी खोलो तो अच्छा रहेगा✌️”
                             <a href="https://www.instagram.com/p/DD65gGVNLY1/" target="_blank" 
-                               class="text-xs text-blue-600 hover:text-blue-800 font-semibold ml-2 inline-flex items-center align-middle not-italic">
+                               class="text-xs text-blue-600 hover:text-blue-800 font-semibold ml-2 inline-flex items-center align-middle not-italic underline">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" class="w-3 h-3 mr-1">
                                     <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="url(#instaGradient)"></rect>
                                     <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" fill="white"></path>
@@ -150,7 +135,7 @@
                         </li>
                         <li>“Trust !! Cheap people can't afford it😉”
                             <a href="https://www.instagram.com/p/DD9oALbtYh0/" target="_blank" 
-                               class="text-xs text-blue-600 hover:text-blue-800 font-semibold ml-2 inline-flex items-center align-middle not-italic">
+                               class="text-xs text-blue-600 hover:text-blue-800 font-semibold ml-2 inline-flex items-center align-middle not-italic underline">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" class="w-3 h-3 mr-1">
                                     <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="url(#instaGradient)"></rect>
                                     <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" fill="white"></path>
@@ -163,8 +148,7 @@
                 </div>
             </div>
             
-            <!-- 2. Love & Light Mood -->
-            <div class="accordion-item rounded-xl border border-pink-200 bg-pink-50" data-mood="love">
+            <!-- 2. Love & Light Mood --><div class="accordion-item rounded-xl border border-pink-200 bg-pink-50" data-mood="love">
                 <button class="accordion-header w-full flex justify-between items-center p-4 text-left font-semibold text-pink-800 bg-white hover:bg-pink-100 transition rounded-xl" onclick="toggleAccordion(this)">
                     <span class="text-lg sm:text-xl">❤️ Love & Light</span>
                     <svg class="accordion-icon w-6 h-6 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -172,11 +156,10 @@
                         </svg>
                     </button>
                     <div class="accordion-content bg-white/50 text-gray-700 border-t border-pink-100">
-                        <!-- Content was not visible, ensure list items are present and correct -->
-                        <ul class="list-disc list-inside space-y-2 text-sm sm:text-base italic">
+                        <!-- Content was not visible, ensure list items are present and correct --><ul class="list-disc list-inside space-y-2 text-sm sm:text-base italic">
                             <li>“समर्पण!! सागर से नहीं होती नदियाँ मार्ग सागर होते हैं नदियाँ से 🙏” 
                                 <a href="https://www.instagram.com/p/DEJx88XtN4Q/" target="_blank" 
-                                   class="text-xs text-pink-600 hover:text-pink-800 font-semibold ml-2 inline-flex items-center align-middle not-italic">
+                                   class="text-xs text-pink-600 hover:text-pink-800 font-semibold ml-2 inline-flex items-center align-middle not-italic underline">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" class="w-3 h-3 mr-1">
                                         <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="url(#instaGradient)"></rect>
                                         <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" fill="white"></path>
@@ -187,7 +170,7 @@
                             </li>
                             <li>“नटखट श्याम: गोकुल में तो बदनाम थे अब बरसाने में हुड़दंग रे 🎨”
                                 <a href="https://www.instagram.com/p/DP5WlpXE3bW/" target="_blank" 
-                                   class="text-xs text-pink-600 hover:text-pink-800 font-semibold ml-2 inline-flex items-center align-middle not-italic">
+                                   class="text-xs text-pink-600 hover:text-pink-800 font-semibold ml-2 inline-flex items-center align-middle not-italic underline">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" class="w-3 h-3 mr-1">
                                         <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="url(#instaGradient)"></rect>
                                         <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" fill="white"></path>
@@ -198,7 +181,7 @@
                             </li>
                             <li>“राधे श्याम 🙏🏻”
                                 <a href="https://www.instagram.com/p/DBJeoFrNWWL/" target="_blank" 
-                                   class="text-xs text-pink-600 hover:text-pink-800 font-semibold ml-2 inline-flex items-center align-middle not-italic">
+                                   class="text-xs text-pink-600 hover:text-pink-800 font-semibold ml-2 inline-flex items-center align-middle not-italic underline">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" class="w-3 h-3 mr-1">
                                         <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="url(#instaGradient)"></rect>
                                         <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" fill="white"></path>
@@ -211,8 +194,7 @@
                     </div>
                 </div>
 
-            <!-- 3. Motivated & Driven Mood -->
-            <div class="accordion-item rounded-xl border border-red-200 bg-red-50" data-mood="motivated">
+            <!-- 3. Motivated & Driven Mood --><div class="accordion-item rounded-xl border border-red-200 bg-red-50" data-mood="motivated">
                 <button class="accordion-header w-full flex justify-between items-center p-4 text-left font-semibold text-red-800 bg-white hover:bg-red-100 transition rounded-xl" onclick="toggleAccordion(this)">
                     <span class="text-lg sm:text-xl">🔥 Motivated & Driven</span>
                     <svg class="accordion-icon w-6 h-6 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -220,12 +202,11 @@
                     </svg>
                 </button>
                 <div class="accordion-content bg-white/50 text-gray-700 border-t border-red-100">
-                    <!-- Updated quote styling (italic, darker text) -->
-                    <ul class="list-disc list-inside space-y-2 text-sm sm:text-base italic">
+                    <!-- Updated quote styling (italic, darker text) --><ul class="list-disc list-inside space-y-2 text-sm sm:text-base italic">
                         
                         <li>“तजुर्बा - चंदन को भी महकने के लिए एक उम्र जरूरी है 💬”
                             <a href="https://www.instagram.com/p/DQDowR5iLPj/" target="_blank" 
-                               class="text-xs text-red-600 hover:text-red-800 font-semibold ml-2 inline-flex items-center align-middle not-italic">
+                               class="text-xs text-red-600 hover:text-red-800 font-semibold ml-2 inline-flex items-center align-middle not-italic underline">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" class="w-3 h-3 mr-1">
                                     <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="url(#instaGradient)"></rect>
                                     <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" fill="white"></path>
@@ -238,8 +219,7 @@
                 </div>
             </div>
 
-            <!-- Footer Note -->
-            <footer class="mt-8 text-center">
+            <!-- Footer Note --><footer class="mt-8 text-center">
                 <p class="text-lg sm:text-xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-500 to-red-500">
                     Choose empathy over conflict!
                 </p>
